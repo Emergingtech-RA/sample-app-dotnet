@@ -1,12 +1,12 @@
 name: .NET
 
 on:
-  workflow_dispatch:
-    inputs:
-      reason:
-        description: 'Testing the workflow'
-        required: true
-        default: 'Manual build from GitHub UI'
+#   workflow_dispatch:
+#     inputs:
+#       reason:
+#         description: 'Testing the workflow'
+#         required: true
+#         default: 'Manual build from GitHub UI'
   push:
     branches: [ development ]
   pull_request:
