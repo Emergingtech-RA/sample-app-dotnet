@@ -6,7 +6,7 @@ on:
   pull_request:
     branches: [ main ]
 env:
-  app-name: demo-dtt/uat
+  app-name: uat
   rg-name: Southeast Asia 
   slot: uat
 
