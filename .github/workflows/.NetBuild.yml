@@ -5,6 +5,10 @@ on:
     branches: [ main ]
   pull_request:
     branches: [ main ]
+env:
+  app-name: ${{ secrets.APP_NAME }}
+  rg-name: ${{ secrets.REGION }}
+  slot: ${{ secrets.SLOT }}
 
 jobs:
   build:
@@ -57,8 +61,8 @@ jobs:
       id: deploywebapp
       uses: azure/webapps-deploy@v2
       with:
-        app-name: ${{ env.APP_NAME }}
-        slot-name:  ${{ env.SLOT }}
+        app-name: ${{ env.app-name }}
+        slot-name:  ${{ env.slot }}
         package: website
 
     - name: az cli logout
