@@ -31,3 +31,35 @@ jobs:
         name: website
         path: ./website/**
         if-no-files-found: error
+        
+
+  deploy_staging:
+    needs: build
+    runs-on: ubuntu-latest
+
+    environment:
+      name: UAT
+      url: ${{ env.URL }}
+
+    steps:
+    - name: Download a Build Artifact
+      uses: actions/download-artifact@v3
+      with:
+        name: website
+        path: website
+
+    - name: Login via Azure CLI
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - name: Deploy web app
+      id: deploywebapp
+      uses: azure/webapps-deploy@v2
+      with:
+        app-name: ${{ env.APP_NAME }}
+        slot-name:  ${{ env.SLOT }}
+        package: website
+
+    - name: az cli logout
+      run: az logout
