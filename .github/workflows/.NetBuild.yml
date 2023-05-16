@@ -55,7 +55,7 @@ jobs:
 
     environment:
       name: UAT
-      url: "http://demo-dtt-uat.azurewebsites.net/"
+      url: "https://demo-dtt-uat.azurewebsites.net/"
 
     steps:
     - name: Download a Build Artifact
